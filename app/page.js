@@ -1,95 +1,71 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import RegionPanel from "@/components/RegionPanel";
+
+// The globe needs the browser (WebGL), so skip it during server rendering
+const GlobeView = dynamic(() => import("@/components/GlobeView"), { ssr: false });
+
+export default function GlobePage() {
+  const [regions, setRegions] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [flyTo, setFlyTo] = useState(null);
+  const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
+
+  // Load all the dots once, from the backend
+  useEffect(() => {
+    fetch("/api/regions")
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .then(setRegions)
+      .catch(() => setError("Could not load regions from /api/regions"));
+  }, []);
+
+  const matches = query
+    ? regions
+        .filter((r) => `${r.city} ${r.country}`.toLowerCase().includes(query.toLowerCase()))
+        .slice(0, 6)
+    : [];
+
+  const choose = (region) => {
+    setSelected(region);
+    setFlyTo(region);
+    setQuery("");
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="globe-page">
+      <GlobeView regions={regions} selected={selected} onSelect={setSelected} flyTo={flyTo} />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <div className="globe-search">
+        <input
+          className="input"
+          placeholder="Search a city or country…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        {matches.length > 0 && (
+          <div className="search-results">
+            {matches.map((r) => (
+              <button key={r.id} onClick={() => choose(r)}>
+                {r.city} <small>{r.country}</small>
+              </button>
+            ))}
+          </div>
+        )}
+        {error && <p className="error">{error}</p>}
+      </div>
+
+      <div className="globe-legend">
+        <div>
+          <span className="dot" />
+          {regions.length} regions with activity
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div>Bigger dot = more submissions</div>
+      </div>
+
+      {selected && <RegionPanel region={selected} onClose={() => setSelected(null)} />}
+    </main>
   );
 }
