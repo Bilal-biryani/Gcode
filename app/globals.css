@@ -189,6 +189,8 @@ th {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  /* Lighter navy behind the globe so the Earth stands out from the background */
+  background: radial-gradient(circle at 50% 50%, #1b2a4a 0%, #0d1528 45%, #05070d 100%);
 }
 .globe-search {
   position: absolute;
@@ -426,4 +428,15 @@ th {
   .admin-cards {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* Fade the globe in once its textures have loaded */
+.globe-canvas {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+.globe-canvas.visible {
+  opacity: 1;
+  transform: scale(1);
 }
