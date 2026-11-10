@@ -3,11 +3,13 @@
 // city_analytics immediately, instead of waiting for the worker's 5-minute cycle.
 // (Polling Codeforces stays in the worker, so two processes never share the API rate limit.)
 //
-// TODO (auth): only admins should be allowed to call this.
+// Admins only: the session cookie is checked here, and MySQL work runs as the
+// gcode_admin user (see db/migrations/003_roles.sql).
 
-import { getPool } from "@/lib/db/mysql";
+import { getAdminPool } from "@/lib/db/mysql";
 import { getMongoDb } from "@/lib/db/mongodb";
 import { dbError } from "@/lib/api";
+import { requireRole } from "@/lib/session";
 import { runJob } from "@/scripts/sync/run-job";
 import { syncOutboxOnce } from "@/scripts/sync/outbox-to-mongo";
 import analytics from "@/scripts/build-city-analytics.cjs";
@@ -15,8 +17,11 @@ import analytics from "@/scripts/build-city-analytics.cjs";
 export const dynamic = "force-dynamic";
 
 export async function POST() {
+  const { error } = await requireRole("admin");
+  if (error) return error;
+
   try {
-    const pool = getPool();
+    const pool = getAdminPool();
     const mongo = await getMongoDb();
 
     const result = await runJob(pool, "analytics", async () => {

@@ -3,16 +3,16 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getUser, logout } from "@/lib/auth";
+import { fetchUser, logout } from "@/lib/auth";
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState(null);
 
-  // Re-read the user whenever login/logout happens
+  // Ask the server who is logged in, and again whenever login/logout happens
   useEffect(() => {
-    const update = () => setUser(getUser());
+    const update = () => fetchUser().then(setUser);
     update();
     window.addEventListener("gcode-auth", update);
     return () => window.removeEventListener("gcode-auth", update);
@@ -43,8 +43,8 @@ export default function Navbar() {
             <span className="role-badge">{user.role}</span>
             <button
               className="btn-ghost"
-              onClick={() => {
-                logout();
+              onClick={async () => {
+                await logout();
                 router.push("/");
               }}
             >
