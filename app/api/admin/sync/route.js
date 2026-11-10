@@ -1,20 +1,40 @@
 // POST /api/admin/sync
-// The "Sync from Codeforces" button on the admin page calls this.
+// "Rebuild now" on the admin page: copy pending outbox rows to MongoDB and rebuild
+// city_analytics immediately, instead of waiting for the worker's 5-minute cycle.
+// (Polling Codeforces stays in the worker, so two processes never share the API rate limit.)
 //
-// TODO (backend): move the Codeforces collector script logic in here.
-//   1. Fetch recent submissions + user info from the Codeforces API.
-//   2. Save the raw JSON response in MongoDB (shape can change, so NoSQL fits).
-//   3. Insert the cleaned rows into MySQL inside a TRANSACTION, so a
-//      failure half-way does not leave half a batch behind.
-//   4. Write a row to the sync log and return the counts.
-//   Only admins should be allowed to call this.
-//
-// Response shape:
-//   { fetched, inserted, status }
+// TODO (auth): only admins should be allowed to call this.
+
+import { getPool } from "@/lib/db/mysql";
+import { getMongoDb } from "@/lib/db/mongodb";
+import { dbError } from "@/lib/api";
+import { runJob } from "@/scripts/sync/run-job";
+import { syncOutboxOnce } from "@/scripts/sync/outbox-to-mongo";
+import analytics from "@/scripts/build-city-analytics.cjs";
+
+export const dynamic = "force-dynamic";
 
 export async function POST() {
-  return Response.json(
-    { error: "Not implemented yet. This is your job!" },
-    { status: 501 }
-  );
+  try {
+    const pool = getPool();
+    const mongo = await getMongoDb();
+
+    const result = await runJob(pool, "analytics", async () => {
+      const copied = await syncOutboxOnce(pool, mongo);
+      const b = await analytics.buildCityAnalytics({ my: pool, db: mongo, verify: false, log: () => {} });
+      return {
+        fetched: b.rawTotal,
+        inserted: b.cities,
+        updated: copied.inserted,
+        message: `manual: ${b.cities} cities from ${b.usable} usable submissions`,
+      };
+    }, { logIdle: true });
+
+    if (result.status === "FAILED") {
+      return Response.json({ error: result.message }, { status: 500 });
+    }
+    return Response.json(result);
+  } catch (error) {
+    return dbError(error, "sync");
+  }
 }

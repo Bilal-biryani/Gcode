@@ -1,13 +1,16 @@
 // GET /api/tags
-// Returns every tag name, for the filter dropdown on the Problems page.
-//
-// TODO (backend): SELECT the tag names from your tags table.
-//
-// Response shape:
-//   [string]
+// Every tag name, for the filter dropdown on the Problems page (MySQL).
 
-import { tags } from "@/lib/mockData";
+import { getPool } from "@/lib/db/mysql";
+import { dbError } from "@/lib/api";
+
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return Response.json(tags);
+  try {
+    const [rows] = await getPool().query("SELECT name FROM tag ORDER BY name");
+    return Response.json(rows.map((r) => r.name));
+  } catch (error) {
+    return dbError(error, "tags");
+  }
 }

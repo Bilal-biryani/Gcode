@@ -189,6 +189,8 @@ th {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  /* Lighter navy behind the globe so the Earth stands out from the background */
+  background: radial-gradient(circle at 50% 50%, #1b2a4a 0%, #0d1528 45%, #05070d 100%);
 }
 .globe-search {
   position: absolute;
@@ -294,6 +296,11 @@ th {
 .stat span {
   font-size: 12px;
   color: var(--muted);
+}
+.updated {
+  font-size: 12px;
+  color: var(--muted);
+  margin: -10px 0 8px;
 }
 .section-title {
   font-size: 13px;
@@ -424,6 +431,69 @@ th {
   }
   .filters,
   .admin-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Fade the globe in once its textures have loaded */
+.globe-canvas {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+.globe-canvas.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- Admin pipeline ---------- */
+.muted {
+  color: var(--muted);
+}
+.admin-cards small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.stage {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.stage b {
+  display: block;
+  font-size: 14px;
+}
+.stage small {
+  font-size: 12px;
+}
+.health {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-radius: 50%;
+}
+.health.ok {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+.health.stale {
+  background: var(--red);
+}
+code {
+  font-family: var(--font-geist-mono), monospace;
+  background: #182030;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+@media (max-width: 720px) {
+  .pipeline {
     grid-template-columns: 1fr 1fr;
   }
 }

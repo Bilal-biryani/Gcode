@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import RegionPanel from "@/components/RegionPanel";
+import RegionPanel from "../components/RegionPanel";
 
 // The globe needs the browser (WebGL), so skip it during server rendering
-const GlobeView = dynamic(() => import("@/components/GlobeView"), { ssr: false });
+const GlobeView = dynamic(() => import("../components/GlobeView"), { ssr: false });
 
 export default function GlobePage() {
   const [regions, setRegions] = useState([]);
@@ -14,12 +14,22 @@ export default function GlobePage() {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
 
-  // Load all the dots once, from the backend
+  // Load the dots, then refresh every minute so new cities appear while the page is open
   useEffect(() => {
-    fetch("/api/regions")
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .then(setRegions)
-      .catch(() => setError("Could not load regions from /api/regions"));
+    const load = () =>
+      fetch("/api/regions")
+        .then(async (res) => (res.ok ? res.json() : Promise.reject((await res.json()).error)))
+        .then((data) => {
+          setRegions(data);
+          setError("");
+          // keep the open panel's headline numbers in step with the new data
+          setSelected((current) => (current ? data.find((r) => r.id === current.id) ?? current : null));
+        })
+        .catch((message) => setError(message || "Could not load regions from /api/regions"));
+
+    load();
+    const timer = setInterval(load, 60000);
+    return () => clearInterval(timer);
   }, []);
 
   const matches = query
@@ -60,7 +70,7 @@ export default function GlobePage() {
       <div className="globe-legend">
         <div>
           <span className="dot" />
-          {regions.length} regions with activity
+          {regions.length} cities with activity
         </div>
         <div>Bigger dot = more submissions</div>
       </div>
