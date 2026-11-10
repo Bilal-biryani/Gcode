@@ -1,4 +1,4 @@
--- GCode: MySQL 8.0.16+ schema (CHECK constraints are enforced from 8.0.16)
+  -- GCode: MySQL 8.0.16+ schema (CHECK constraints are enforced from 8.0.16)
 --
 -- Run with the mysql client:   mysql -u root -p < schema.sql
 --   (DELIMITER is a client command, so Node drivers such as mysql2 cannot run this file directly)
