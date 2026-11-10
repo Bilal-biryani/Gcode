@@ -59,3 +59,9 @@ lib/
   auth.js            Remembers who is logged in, in the browser (UI only, not security)
   db/                Database connections (TODO)
 ```
+
+## Login and roles
+
+- **Login:** `/login` checks the email and password against `app_user` (bcrypt hash) and sets a signed httpOnly cookie. `AUTH_SECRET` in `.env.local` signs it.
+- **Two roles:** `ADMIN` (shown as "admin") and `USER` (shown as "viewer"). Only admins can open `/admin`, `/api/admin/stats` and `/api/admin/sync`; others get 401/403 from the server.
+- **Role-based access control in MySQL:** `db/migrations/003_roles.sql` creates `gcode_viewer` (SELECT only) and `gcode_admin` roles. Public routes connect as the viewer account, admin routes as the admin account, so the database itself refuses writes from the viewer role.

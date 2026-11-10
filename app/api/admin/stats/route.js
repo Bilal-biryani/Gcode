@@ -1,18 +1,22 @@
 // GET /api/admin/stats
 // Live numbers for the admin dashboard: database totals, worker health, recent job runs.
 //
-// TODO (auth): check the logged-in user's role here once real login exists.
-// Right now only the admin page hides itself from non-admins.
+// Admins only: the session cookie is checked here, and the queries run as the
+// gcode_admin MySQL user (see db/migrations/003_roles.sql).
 
-import { getPool } from "@/lib/db/mysql";
+import { getAdminPool } from "@/lib/db/mysql";
 import { getMongoDb } from "@/lib/db/mongodb";
 import { dbError } from "@/lib/api";
+import { requireRole } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const { error } = await requireRole("admin");
+  if (error) return error;
+
   try {
-    const pool = getPool();
+    const pool = getAdminPool();
 
     const [[totals]] = await pool.query(`
       SELECT

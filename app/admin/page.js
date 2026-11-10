@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { getUser } from "@/lib/auth";
+import { fetchUser } from "@/lib/auth";
 
 const REFRESH_MS = 5000;
 
@@ -43,9 +43,15 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    setUser(getUser());
-    load();
-    const timer = setInterval(load, REFRESH_MS);
+    let timer;
+    // only start loading the dashboard once the server confirms an admin session
+    fetchUser().then((u) => {
+      setUser(u);
+      if (u?.role === "admin") {
+        load();
+        timer = setInterval(load, REFRESH_MS);
+      }
+    });
     return () => clearInterval(timer);
   }, [load]);
 
