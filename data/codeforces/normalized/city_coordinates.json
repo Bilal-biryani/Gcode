@@ -1,0 +1,828 @@
+[
+  {
+    "city": "Huizhou",
+    "country": "China",
+    "latitude": 23.1125153,
+    "longitude": 114.4127007,
+    "displayName": "惠州市, 广东省, 中国"
+  },
+  {
+    "city": "Assiut",
+    "country": "Egypt",
+    "latitude": 27.0463044,
+    "longitude": 31.0148027,
+    "displayName": "أسيوط الدولى, طريق اسيوط, قنا الصحراوى الغربى, ناصر الجديدة, أسيوط, مصر"
+  },
+  {
+    "city": "Riga",
+    "country": "Latvia",
+    "latitude": 56.9493977,
+    "longitude": 24.1051846,
+    "displayName": "Rīga, Latvija"
+  },
+  {
+    "city": "Khorugh",
+    "country": "Tajikistan",
+    "latitude": 37.4909171,
+    "longitude": 71.548922,
+    "displayName": "Хоруғ, Ноҳияи Шуғнон, Вилояти Мухтори Кӯҳистони Бадахшон, Тоҷикистон"
+  },
+  {
+    "city": "Aleppo",
+    "country": "Syria",
+    "latitude": 36.19924,
+    "longitude": 37.1637253,
+    "displayName": "حلب, ناحية مركز جبل سمعان, منطقة جبل سمعان, محافظة حلب, سوريا"
+  },
+  {
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "latitude": 59.9606739,
+    "longitude": 30.1586551,
+    "displayName": "Санкт-Петербург, Северо-Западный федеральный округ, Россия"
+  },
+  {
+    "city": "Hyderabad",
+    "country": "India",
+    "latitude": 17.360589,
+    "longitude": 78.4740613,
+    "displayName": "Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India"
+  },
+  {
+    "city": "Delhi",
+    "country": "India",
+    "latitude": 28.6328027,
+    "longitude": 77.2197713,
+    "displayName": "Delhi, India"
+  },
+  {
+    "city": "Nashik",
+    "country": "India",
+    "latitude": 20.0112475,
+    "longitude": 73.7902364,
+    "displayName": "Nashik, Nashik Subdistrict, Nashik, Maharashtra, 422001, India"
+  },
+  {
+    "city": "Tunis",
+    "country": "Tunisia",
+    "latitude": 36.8002068,
+    "longitude": 10.1857757,
+    "displayName": "تونس, ولاية تونس, تونس"
+  },
+  {
+    "city": "Jaipur",
+    "country": "India",
+    "latitude": 26.9154576,
+    "longitude": 75.8189817,
+    "displayName": "Jaipur, Jaipur Municipal Corporation, Jaipur Tehsil, Jaipur, Rajasthan, 302001, India"
+  },
+  {
+    "city": "Kolkata",
+    "country": "India",
+    "latitude": 22.5726459,
+    "longitude": 88.3638953,
+    "displayName": "Kolkata, Greater Kolkata, Kolkata, West Bengal, India"
+  },
+  {
+    "city": "Tver'",
+    "country": "Russia",
+    "latitude": 56.8596713,
+    "longitude": 35.8952416,
+    "displayName": "Тверь, Тверская область, Центральный федеральный округ, Россия"
+  },
+  {
+    "city": "Incheon",
+    "country": "South Korea",
+    "latitude": 37.456,
+    "longitude": 126.7052,
+    "displayName": "인천광역시, 대한민국"
+  },
+  {
+    "city": "Noida",
+    "country": "India",
+    "latitude": 28.5706333,
+    "longitude": 77.3272147,
+    "displayName": "Noida, Dadri, Gautam Buddha Nagar, Uttar Pradesh, India"
+  },
+  {
+    "city": "Pune",
+    "country": "India",
+    "latitude": 18.5213738,
+    "longitude": 73.8545071,
+    "displayName": "Pune, Pune City Subdistrict, Pune, Maharashtra, 411001, India"
+  },
+  {
+    "city": "Changsha",
+    "country": "China",
+    "latitude": 28.1450774,
+    "longitude": 113.2384362,
+    "displayName": "长沙市, 湖南省, 中国"
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "latitude": 10.7737261,
+    "longitude": 106.7166008,
+    "displayName": "Thành phố Hồ Chí Minh, Việt Nam"
+  },
+  {
+    "city": "Muzaffarpur",
+    "country": "India",
+    "latitude": 26.1482548,
+    "longitude": 85.3316097,
+    "displayName": "Muzaffarpur, Bihar, India"
+  },
+  {
+    "city": "Chongqing",
+    "country": "China",
+    "latitude": 30.05518,
+    "longitude": 107.8748712,
+    "displayName": "重庆市, 中国"
+  },
+  {
+    "city": "Vitebsk",
+    "country": "Belarus",
+    "latitude": 55.1930197,
+    "longitude": 30.2070437,
+    "displayName": "Віцебск, Віцебская вобласць, Беларусь"
+  },
+  {
+    "city": "Damascus",
+    "country": "Syria",
+    "latitude": 33.5130695,
+    "longitude": 36.3095814,
+    "displayName": "دمشق, بلدية دمشق القديمة, ناحية دمشق, منطقة دمشق, محافظة دمشق, سوريا"
+  },
+  {
+    "city": "Patna",
+    "country": "India",
+    "latitude": 25.6093239,
+    "longitude": 85.1235252,
+    "displayName": "Patna, Patna Rural, Patna, Bihar, India"
+  },
+  {
+    "city": "Tbilisi",
+    "country": "Georgia",
+    "latitude": 41.6934591,
+    "longitude": 44.8014495,
+    "displayName": "თბილისი, საქართველო"
+  },
+  {
+    "city": "Almaty",
+    "country": "Kazakhstan",
+    "latitude": 43.2363924,
+    "longitude": 76.9457275,
+    "displayName": "Алматы, Қазақстан"
+  },
+  {
+    "city": "Ludhiana",
+    "country": "India",
+    "latitude": 30.9090157,
+    "longitude": 75.851601,
+    "displayName": "Ludhiana, Ludhiana (West) Tahsil, Ludhiana, Punjab, 141001, India"
+  },
+  {
+    "city": "Brasília",
+    "country": "Brazil",
+    "latitude": -15.7939869,
+    "longitude": -47.8828,
+    "displayName": "Brasília, Plano Piloto, Distrito Federal, Região Centro-Oeste, 70391-900, Brasil"
+  },
+  {
+    "city": "Virār",
+    "country": "India",
+    "latitude": 19.4497996,
+    "longitude": 72.8120613,
+    "displayName": "Virar, Vasai-Virar, Vasai Subdistrict, Palghar, Maharashtra, 401303, India"
+  },
+  {
+    "city": "Yazd",
+    "country": "Iran",
+    "latitude": 32.0406164,
+    "longitude": 54.6657189,
+    "displayName": "استان یزد, ایران"
+  },
+  {
+    "city": "Old Goa",
+    "country": "India",
+    "latitude": 15.5023329,
+    "longitude": 73.9117432,
+    "displayName": "Old Goa, Panaji, Tiswadi, North Goa, Goa, 403108, India"
+  },
+  {
+    "city": "Beijing",
+    "country": "China",
+    "latitude": 39.9057136,
+    "longitude": 116.3912972,
+    "displayName": "北京市, 中国"
+  },
+  {
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "latitude": 22.2818333,
+    "longitude": 114.1582831,
+    "displayName": "香港 Hong Kong, 中国"
+  },
+  {
+    "city": "Cairo",
+    "country": "Egypt",
+    "latitude": 30.0443879,
+    "longitude": 31.2357257,
+    "displayName": "القاهرة, مصر"
+  },
+  {
+    "city": "Wrocław",
+    "country": "Poland",
+    "latitude": 51.1089776,
+    "longitude": 17.0326689,
+    "displayName": "Wrocław, województwo dolnośląskie, Polska"
+  },
+  {
+    "city": "Chengdu",
+    "country": "China",
+    "latitude": 30.659867,
+    "longitude": 104.063315,
+    "displayName": "成都市, 四川省, 中国"
+  },
+  {
+    "city": "Meerut",
+    "country": "India",
+    "latitude": 29.0018557,
+    "longitude": 77.7679671,
+    "displayName": "Meerut, Uttar Pradesh, India"
+  },
+  {
+    "city": "Rostov-on-Don",
+    "country": "Russia",
+    "latitude": 47.2610441,
+    "longitude": 39.7249086,
+    "displayName": "городской округ Ростов-на-Дону, Ростовская область, Южный федеральный округ, Россия"
+  },
+  {
+    "city": "Nowy Sącz",
+    "country": "Poland",
+    "latitude": 49.610304,
+    "longitude": 20.7149366,
+    "displayName": "Nowy Sącz, województwo małopolskie, Polska"
+  },
+  {
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "latitude": -6.1754049,
+    "longitude": 106.827168,
+    "displayName": "Daerah Khusus Ibukota Jakarta, Indonesia"
+  },
+  {
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "latitude": 40.3755885,
+    "longitude": 49.8328009,
+    "displayName": "Bakı, Azərbaycan"
+  },
+  {
+    "city": "Kanpur",
+    "country": "India",
+    "latitude": 26.4609135,
+    "longitude": 80.3217588,
+    "displayName": "Kanpur, Kanpur Nagar, Uttar Pradesh, 208012, India"
+  },
+  {
+    "city": "Chittagong",
+    "country": "Bangladesh",
+    "latitude": 22.333778,
+    "longitude": 91.8344348,
+    "displayName": "চট্টগ্রাম, চট্টগ্রাম শহর, চট্টগ্রাম জেলা, চট্টগ্রাম বিভাগ, 4000, বাংলাদেশ"
+  },
+  {
+    "city": "Voronezh",
+    "country": "Russia",
+    "latitude": 51.6605982,
+    "longitude": 39.2005858,
+    "displayName": "Воронеж, городской округ Воронеж, Воронежская область, Центральный федеральный округ, Россия"
+  },
+  {
+    "city": "New Delhi",
+    "country": "India",
+    "latitude": 28.6138954,
+    "longitude": 77.2090057,
+    "displayName": "New Delhi, Delhi, India"
+  },
+  {
+    "city": "Rajkot",
+    "country": "India",
+    "latitude": 22.3053263,
+    "longitude": 70.8028377,
+    "displayName": "Rajkot, Rajkot East Taluka, Rajkot, Gujarat, 360001, India"
+  },
+  {
+    "city": "Mianyang",
+    "country": "China",
+    "latitude": 31.4602714,
+    "longitude": 104.7160723,
+    "displayName": "绵阳市, 四川省, 中国"
+  },
+  {
+    "city": "Jinghong",
+    "country": "China",
+    "latitude": 22.0147814,
+    "longitude": 100.7983916,
+    "displayName": "景洪市, 西双版纳傣族自治州, 云南省, 666100, 中国"
+  },
+  {
+    "city": "Rāipur",
+    "country": "India",
+    "latitude": 21.2380912,
+    "longitude": 81.6336993,
+    "displayName": "Raipur, Raipur Tahsil, Raipur, Chhattisgarh, 493332, India"
+  },
+  {
+    "city": "Banī Suwayf",
+    "country": "Egypt",
+    "latitude": 29.0729812,
+    "longitude": 31.0982562,
+    "displayName": "بني سويف, بنى سويف, 62513, مصر"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "latitude": 55.625578,
+    "longitude": 37.6063916,
+    "displayName": "Москва, Центральный федеральный округ, Россия"
+  },
+  {
+    "city": "Dhanbad",
+    "country": "India",
+    "latitude": 23.7952809,
+    "longitude": 86.4309638,
+    "displayName": "Dhanbad, Dhanbad-Cum-Kenduadih-Cum-Jagata, Dhanbad, Jharkhand, 826001, India"
+  },
+  {
+    "city": "Shibīn al Kawm",
+    "country": "Egypt",
+    "latitude": 30.5545106,
+    "longitude": 31.0097923,
+    "displayName": "شبين الكوم, محافظة المنوفية, 32514, مصر"
+  },
+  {
+    "city": "Chandauli",
+    "country": "India",
+    "latitude": 25.125695,
+    "longitude": 83.2494601,
+    "displayName": "Chandauli, Uttar Pradesh, India"
+  },
+  {
+    "city": "Giza",
+    "country": "Egypt",
+    "latitude": 29.9870753,
+    "longitude": 31.2118063,
+    "displayName": "الجيزة, 12524, مصر"
+  },
+  {
+    "city": "Chennai",
+    "country": "India",
+    "latitude": 13.0800915,
+    "longitude": 80.2807978,
+    "displayName": "Chennai, Chennai Metropolitan Area, Chennai District, Tamil Nadu, India"
+  },
+  {
+    "city": "Nukus",
+    "country": "Uzbekistan",
+    "latitude": 42.4600229,
+    "longitude": 59.6176603,
+    "displayName": "Nókis, Nókis qalası hákimiyatı, Qaraqalpaqstan Respublikası, 230100, Oʻzbekiston"
+  },
+  {
+    "city": "Biên Hòa",
+    "country": "Vietnam",
+    "latitude": 10.9142127,
+    "longitude": 106.8916043,
+    "displayName": "Thành phố Biên Hòa, Thành phố Đồng Nai, Việt Nam"
+  },
+  {
+    "city": "Bengaluru",
+    "country": "India",
+    "latitude": 12.9767936,
+    "longitude": 77.590082,
+    "displayName": "Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, India"
+  },
+  {
+    "city": "Sohag",
+    "country": "Egypt",
+    "latitude": 26.7624629,
+    "longitude": 32.0909936,
+    "displayName": "سوهاج, مصر"
+  },
+  {
+    "city": "Islamabad",
+    "country": "Pakistan",
+    "latitude": 33.6938118,
+    "longitude": 73.0651511,
+    "displayName": "اسلام آباد, زون 1, وفاقی دارالحکومت اسلام آباد, 44000, پاکستان"
+  },
+  {
+    "city": "Hangzhou",
+    "country": "China",
+    "latitude": 30.2489634,
+    "longitude": 120.2052342,
+    "displayName": "杭州市, 浙江省, 中国"
+  },
+  {
+    "city": "Shiraz",
+    "country": "Iran",
+    "latitude": 29.6060218,
+    "longitude": 52.5378041,
+    "displayName": "شیراز, بخش مرکزی شیراز, شهرستان شیراز, استان فارس, ایران"
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "latitude": 41.3825802,
+    "longitude": 2.177073,
+    "displayName": "Barcelona, Barcelonès, Barcelona, Catalunya, España"
+  },
+  {
+    "city": "Ujhāni",
+    "country": "India",
+    "latitude": 27.9951096,
+    "longitude": 79.0153138,
+    "displayName": "Ujhani, NH21, Ujhani, Budaun, Badaun, Uttar Pradesh, 243639, India"
+  },
+  {
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.4009309,
+    "longitude": 13.0591397,
+    "displayName": "Potsdam, Brandenburg, Deutschland"
+  },
+  {
+    "city": "Berlin",
+    "country": "Germany",
+    "latitude": 52.5173885,
+    "longitude": 13.3951309,
+    "displayName": "Berlin, Deutschland"
+  },
+  {
+    "city": "Amman",
+    "country": "Jordan",
+    "latitude": 31.9515694,
+    "longitude": 35.9239625,
+    "displayName": "عمان, ناحية عمان, لواء قصبة عمان, عمان, 11110, الأردن"
+  },
+  {
+    "city": "Tétouan",
+    "country": "Morocco",
+    "latitude": 35.5696561,
+    "longitude": -5.3758075,
+    "displayName": "Tétouan تطوان, Pachalik de Tétouan باشوية تطوان, Province de Tétouan إقليم تطوان, Tanger-Tétouan-Al Hoceïma ⵟⴰⵏⵊ-ⵟⵉⵜⴰⵡⵉⵏ-ⵍⵃⵓⵙⵉⵎⴰ طنجة تطوان الحسيمة, Maroc ⵍⵎⵖⵔⵉⴱ المغرب"
+  },
+  {
+    "city": "Zhengzhou",
+    "country": "China",
+    "latitude": 34.7472531,
+    "longitude": 113.619321,
+    "displayName": "郑州市, 河南省, 中国"
+  },
+  {
+    "city": "Bandar Lampung",
+    "country": "Indonesia",
+    "latitude": -5.4293858,
+    "longitude": 105.2626169,
+    "displayName": "Bandar Lampung, Lampung, Indonesia"
+  },
+  {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "latitude": -34.6095579,
+    "longitude": -58.3887904,
+    "displayName": "Buenos Aires, Comuna 1, Ciudad Autónoma de Buenos Aires, Argentina"
+  },
+  {
+    "city": "Luanda",
+    "country": "Angola",
+    "latitude": -8.8272699,
+    "longitude": 13.2439512,
+    "displayName": "Luanda, Angola"
+  },
+  {
+    "city": "Bilaspur",
+    "country": "India",
+    "latitude": 22.1638486,
+    "longitude": 82.1365923,
+    "displayName": "Bilaspur, Chhattisgarh, India"
+  },
+  {
+    "city": "Latakia",
+    "country": "Syria",
+    "latitude": 35.579874,
+    "longitude": 35.9772699,
+    "displayName": "محافظة اللاذقية, سوريا"
+  },
+  {
+    "city": "Gurgaon",
+    "country": "India",
+    "latitude": 28.4646148,
+    "longitude": 77.0299194,
+    "displayName": "Gurugram, Haryana, India"
+  },
+  {
+    "city": "Recife",
+    "country": "Brazil",
+    "latitude": -8.0584933,
+    "longitude": -34.8848193,
+    "displayName": "Recife, Pernambuco, Região Nordeste, Brasil"
+  },
+  {
+    "city": "Oral",
+    "country": "Kazakhstan",
+    "latitude": 51.2040697,
+    "longitude": 51.3707863,
+    "displayName": "Орал, Орал қалалық әкімдігі, Батыс Қазақстан облысы, Қазақстан"
+  },
+  {
+    "city": "Tashkent",
+    "country": "Uzbekistan",
+    "latitude": 41.3123363,
+    "longitude": 69.2787079,
+    "displayName": "Toshkent, 100000, Oʻzbekiston"
+  },
+  {
+    "city": "Belgaum",
+    "country": "India",
+    "latitude": 15.8572666,
+    "longitude": 74.5069343,
+    "displayName": "Belagavi, Belagavi taluku, Belagavi, Karnataka, 590001, India"
+  },
+  {
+    "city": "Atbasar",
+    "country": "Kazakhstan",
+    "latitude": 51.8097369,
+    "longitude": 68.3573356,
+    "displayName": "Атбасар, Атбасар ауданы, Ақмола облысы, 020400, Қазақстан"
+  },
+  {
+    "city": "El Kef",
+    "country": "Tunisia",
+    "latitude": 36.0357643,
+    "longitude": 8.7249381,
+    "displayName": "ولاية الكاف, تونس"
+  },
+  {
+    "city": "Dhaka",
+    "country": "Bangladesh",
+    "latitude": 23.7643863,
+    "longitude": 90.3890144,
+    "displayName": "ঢাকা, ঢাকা মহানগর, ঢাকা জেলা, ঢাকা বিভাগ, 1215, বাংলাদেশ"
+  },
+  {
+    "city": "Ranchi",
+    "country": "India",
+    "latitude": 23.3700501,
+    "longitude": 85.3250387,
+    "displayName": "Ranchi, Kanke, Ranchi, Jharkhand, 834001, India"
+  },
+  {
+    "city": "Surat",
+    "country": "India",
+    "latitude": 21.2094892,
+    "longitude": 72.8317058,
+    "displayName": "Surat, Katargam Taluka, Surat, Gujarat, 395008, India"
+  },
+  {
+    "city": "Astana",
+    "country": "Kazakhstan",
+    "latitude": 51.1159933,
+    "longitude": 71.4677059,
+    "displayName": "Астана, Қазақстан"
+  },
+  {
+    "city": "Nha Trang",
+    "country": "Vietnam",
+    "latitude": 12.2084991,
+    "longitude": 109.2871204,
+    "displayName": "Thành phố Nha Trang, Tỉnh Khánh Hòa, Việt Nam"
+  },
+  {
+    "city": "Shanghai",
+    "country": "China",
+    "latitude": 31.2312707,
+    "longitude": 121.4700152,
+    "displayName": "上海市, 中国"
+  },
+  {
+    "city": "Salem",
+    "country": "India",
+    "latitude": 11.6469616,
+    "longitude": 78.2106958,
+    "displayName": "Salem, Tamil Nadu, India"
+  },
+  {
+    "city": "Gwalior",
+    "country": "India",
+    "latitude": 26.2037247,
+    "longitude": 78.1573628,
+    "displayName": "Gwalior, Gird Tahsil, Gwalior, Madhya Pradesh, 474001, India"
+  },
+  {
+    "city": "Mumbai",
+    "country": "India",
+    "latitude": 19.054999,
+    "longitude": 72.8692035,
+    "displayName": "Mumbai, Mumbai Suburban District, Maharashtra, 400051, India"
+  },
+  {
+    "city": "Sfax",
+    "country": "Tunisia",
+    "latitude": 34.7394361,
+    "longitude": 10.7604024,
+    "displayName": "صفاقس, المدينة, معتمدية صفاقس المدينة, ولاية صفاقس, 3000, تونس"
+  },
+  {
+    "city": "Kyzyl-Orda",
+    "country": "Kazakhstan",
+    "latitude": 44.8297043,
+    "longitude": 65.5128074,
+    "displayName": "Petro Kazakhstan, 29, Абай даңғылы, Қызылорда, Қызылорда Қ.Ә., Қызылорда облысы, 120000, Қазақстан"
+  },
+  {
+    "city": "Sarajevo",
+    "country": "Bosnia and Herzegovina",
+    "latitude": 43.8570713,
+    "longitude": 18.4126147,
+    "displayName": "Sarajevo, Mjesna zajednica Trg oslobođenja-Centar, Općina Centar, Grad Sarajevo, Kanton Sarajevo, Federacija Bosne i Hercegovine, 71000, Bosna i Hercegovina / Босна и Херцеговина"
+  },
+  {
+    "city": "Karachi",
+    "country": "Pakistan",
+    "latitude": 24.8546842,
+    "longitude": 67.0207055,
+    "displayName": "کراچی ڈویژن, سندھ, پاکستان"
+  },
+  {
+    "city": "Brahmapur",
+    "country": "India",
+    "latitude": 19.3098134,
+    "longitude": 84.7971562,
+    "displayName": "Brahmapur, Rangeilunda, Ganjam, Odisha, 760001, India"
+  },
+  {
+    "city": "Guwahati",
+    "country": "India",
+    "latitude": 26.1805978,
+    "longitude": 91.753943,
+    "displayName": "Guwahati, Kamrup Metropolitan, Assam, 781001, India"
+  },
+  {
+    "city": "Kopeysk",
+    "country": "Russia",
+    "latitude": 55.1131951,
+    "longitude": 61.6216332,
+    "displayName": "Копейск, Копейский городской округ, Челябинская область, Уральский федеральный округ, Россия"
+  },
+  {
+    "city": "Ahmedabad",
+    "country": "India",
+    "latitude": 23.0215374,
+    "longitude": 72.5800568,
+    "displayName": "Ahmedabad, Gujarat, 380001, India"
+  },
+  {
+    "city": "Vilnius",
+    "country": "Lithuania",
+    "latitude": 54.6870458,
+    "longitude": 25.2829111,
+    "displayName": "Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, Lietuva"
+  },
+  {
+    "city": "Babruysk",
+    "country": "Belarus",
+    "latitude": 53.1449683,
+    "longitude": 29.2281209,
+    "displayName": "Бабруйск, Магілёўская вобласць, Беларусь"
+  },
+  {
+    "city": "Kazan’",
+    "country": "Russia",
+    "latitude": 55.7946485,
+    "longitude": 49.1115022,
+    "displayName": "Казань, городской округ Казань, Татарстан, Приволжский федеральный округ, Россия"
+  },
+  {
+    "city": "Seoul",
+    "country": "South Korea",
+    "latitude": 37.5666791,
+    "longitude": 126.9782914,
+    "displayName": "서울특별시, 대한민국"
+  },
+  {
+    "city": "Lucknow",
+    "country": "India",
+    "latitude": 26.8381,
+    "longitude": 80.9346001,
+    "displayName": "Lucknow, Uttar Pradesh, 226027, India"
+  },
+  {
+    "city": "Jhajjar",
+    "country": "India",
+    "latitude": 28.5964461,
+    "longitude": 76.6505366,
+    "displayName": "Jhajjar, Haryana, India"
+  },
+  {
+    "city": "Tambov",
+    "country": "Russia",
+    "latitude": 52.7216164,
+    "longitude": 41.4523988,
+    "displayName": "городской округ Тамбов, Тамбовская область, Центральный федеральный округ, Россия"
+  },
+  {
+    "city": "Agartala",
+    "country": "India",
+    "latitude": 23.8312377,
+    "longitude": 91.2823821,
+    "displayName": "Agartala, Mohanpur, West Tripura, Tripura, 799001, India"
+  },
+  {
+    "city": "Nanchang",
+    "country": "China",
+    "latitude": 28.6472124,
+    "longitude": 116.0348483,
+    "displayName": "南昌市, 江西省, 中国"
+  },
+  {
+    "city": "Rosetta",
+    "country": "Egypt",
+    "latitude": 31.4013811,
+    "longitude": 30.418428,
+    "displayName": "رشيد, البحيرة, 22745, مصر"
+  },
+  {
+    "city": "Homs",
+    "country": "Syria",
+    "latitude": 34.7333334,
+    "longitude": 36.7166667,
+    "displayName": "حمص, ناحية مركز حمص, منطقة حمص, محافظة حمص, سوريا"
+  },
+  {
+    "city": "Karaj",
+    "country": "Iran",
+    "latitude": 35.8224892,
+    "longitude": 50.9904681,
+    "displayName": "کرج, بخش مرکزی کرج, شهرستان کرج, استان البرز, ایران"
+  },
+  {
+    "city": "Tianjin",
+    "country": "China",
+    "latitude": 39.3032619,
+    "longitude": 117.4163641,
+    "displayName": "天津市, 中国"
+  },
+  {
+    "city": "Vijāpur",
+    "country": "India",
+    "latitude": 23.5590941,
+    "longitude": 72.7449399,
+    "displayName": "Vijapur, SH130, Vijapur, Vijapur Taluka, Mahesana, Gujarat, 382870, India"
+  },
+  {
+    "city": "Tehran",
+    "country": "Iran",
+    "latitude": 35.6892523,
+    "longitude": 51.3896004,
+    "displayName": "شهر تهران, بخش مرکزی شهرستان تهران, شهرستان تهران, استان تهران, ایران"
+  },
+  {
+    "city": "Greater Noida",
+    "country": "India",
+    "latitude": 28.4670734,
+    "longitude": 77.5137649,
+    "displayName": "Greater Noida, Gautam Buddha Nagar, Uttar Pradesh, 210310, India"
+  },
+  {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "latitude": 21.0283334,
+    "longitude": 105.854041,
+    "displayName": "Thành phố Hà Nội, Việt Nam"
+  },
+  {
+    "city": "Jessore",
+    "country": "Bangladesh",
+    "latitude": 23.1665256,
+    "longitude": 89.2094419,
+    "displayName": "যশোর, যশোর জেলা, খুলনা বিভাগ, বাংলাদেশ"
+  },
+  {
+    "city": "Saratov",
+    "country": "Russia",
+    "latitude": 51.530018,
+    "longitude": 46.034683,
+    "displayName": "Саратов, городской округ Саратов, Саратовская область, Приволжский федеральный округ, 410000, Россия"
+  },
+  {
+    "city": "Makhachkala",
+    "country": "Russia",
+    "latitude": 42.9830241,
+    "longitude": 47.5048717,
+    "displayName": "Махачкала, городской округ Махачкала, Дагестан, Северо-Кавказский федеральный округ, 367000, Россия"
+  }
+]
