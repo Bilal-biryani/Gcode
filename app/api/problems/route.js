@@ -2,7 +2,7 @@
 // Problems table (MySQL). Uses the FULLTEXT index on problem.name for searches of 3+ letters,
 // and a CTE to count distinct accepted solvers per problem.
 
-import { getPool } from "@/lib/db/mysql";
+import { getViewerPool } from "@/lib/db/mysql";
 import { dbError } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -62,7 +62,7 @@ export async function GET(request) {
     LIMIT 100`;
 
   try {
-    const [rows] = await getPool().query(sql, values);
+    const [rows] = await getViewerPool().query(sql, values);
     return Response.json(rows.map((r) => ({
       ...r,
       solvedCount: Number(r.solvedCount),
