@@ -283,49 +283,24 @@ async function ensureCollection(db, name, validator) {
   else if (validator) await db.command({ collMod: name, validator });
 }
 
-// createIndex that tolerates an index which already exists on the same key under the same
-// name but with different options (e.g. the importer made it unique). Codes 85 / 86 =
-// IndexOptionsConflict / IndexKeySpecsConflict: the lookup index we need is already there.
-async function ensureIndex(collection, keys, options) {
-  try {
-    await collection.createIndex(keys, options);
-  } catch (err) {
-    if (err && (err.code === 85 || err.code === 86)) return;
-    throw err;
-  }
-}
+async function main() {
+  // Next.js project credentials live in .env.local, not .env.
+  // dotenv does not overwrite variables already present in process.env by default.
+  try { require('dotenv').config({ path: '.env.local' }); } catch { /* dotenv is optional */ }
+  const mysql = require('mysql2/promise');
+  const { MongoClient } = require('mongodb');
 
-// opts.my  : an existing mysql2 pool/connection to reuse (not closed here)
-// opts.db  : an existing MongoDB Db handle to reuse (not closed here)
-// opts.log : logger (default console.log); pass () => {} to silence
-async function main(args = new Set(process.argv.slice(2)), opts = {}) {
-  const log = opts.log ?? console.log;
-  let my = opts.my;
-  let db = opts.db;
-  let client = null;   // only set when this function opened the MongoDB connection itself
-  const ownsMy = !my;
-
-  if (!my || !db) {
-    // Next.js project credentials live in .env.local, not .env.
-    // dotenv does not overwrite variables already present in process.env by default.
-    try { require('dotenv').config({ path: '.env.local' }); } catch { /* dotenv is optional */ }
-  }
-  if (!my) {
-    const mysql = require('mysql2/promise');
-    my = await mysql.createConnection({
-      host: process.env.DB_HOST ?? process.env.MYSQL_HOST ?? 'localhost',
-      port: Number(process.env.DB_PORT ?? process.env.MYSQL_PORT ?? 3306),
-      user: process.env.DB_USER ?? process.env.MYSQL_USER ?? 'root',
-      password: process.env.DB_PASSWORD ?? process.env.MYSQL_PASSWORD ?? '',
-      database: process.env.DB_NAME ?? process.env.MYSQL_DATABASE ?? 'gcode',
-    });
-  }
-  if (!db) {
-    const { MongoClient } = require('mongodb');
-    client = new MongoClient(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017');
-    await client.connect();
-    db = client.db(process.env.MONGODB_DB || 'gcode');
-  }
+  const args = new Set(process.argv.slice(2));
+  const my = await mysql.createConnection({
+    host: process.env.DB_HOST ?? process.env.MYSQL_HOST ?? 'localhost',
+    port: Number(process.env.DB_PORT ?? process.env.MYSQL_PORT ?? 3306),
+    user: process.env.DB_USER ?? process.env.MYSQL_USER ?? 'root',
+    password: process.env.DB_PASSWORD ?? process.env.MYSQL_PASSWORD ?? '',
+    database: process.env.DB_NAME ?? process.env.MYSQL_DATABASE ?? 'gcode',
+  });
+  const client = new MongoClient(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017');
+  await client.connect();
+  const db = client.db(process.env.MONGODB_DB || 'gcode');
 
   try {
     // 1. handle -> city and city coordinates, straight from MySQL (the source of truth)
@@ -336,7 +311,7 @@ async function main(args = new Set(process.argv.slice(2)), opts = {}) {
       JOIN platform p ON p.platform_id = a.platform_id AND p.name = 'Codeforces'
       JOIN city c     ON c.city_id = a.city_id
       JOIN country co ON co.country_id = c.country_id`);
-    log(`MySQL: ${rows.length} accounts with a resolved city`);
+    console.log(`MySQL: ${rows.length} accounts with a resolved city`);
 
     const cities = new Map();
     for (const r of rows) {
@@ -361,9 +336,9 @@ async function main(args = new Set(process.argv.slice(2)), opts = {}) {
     await db.collection('raw_problems').updateMany(
       { key: { $exists: false } },
       [{ $set: { key: { $concat: [{ $toString: '$contestId' }, '$index'] } } }]);
-    await ensureIndex(db.collection('raw_problems'), { key: 1 });
-    await ensureIndex(db.collection('raw_submissions'), { id: 1 });
-    await ensureIndex(db.collection('raw_users'), { handle: 1 });
+    await db.collection('raw_problems').createIndex({ key: 1 });
+    await db.collection('raw_submissions').createIndex({ id: 1 });
+    await db.collection('raw_users').createIndex({ handle: 1 });
 
     // 3. rebuild (city_analytics is derived data: safe to wipe and recompute)
     await db.collection('city_analytics').deleteMany({});
@@ -371,7 +346,7 @@ async function main(args = new Set(process.argv.slice(2)), opts = {}) {
     await db.collection('raw_submissions').aggregate(enrichPipeline()).toArray();
     const usable = await db.collection('tmp_city_submissions').countDocuments();
     const rawTotal = await db.collection('raw_submissions').countDocuments();
-    log(`Mongo: ${usable} of ${rawTotal} raw submissions are usable (final verdict + known city)`);
+    console.log(`Mongo: ${usable} of ${rawTotal} raw submissions are usable (final verdict + known city)`);
 
     // 4. one aggregation per panel section; totals first because it creates the city document
     const tmp = db.collection('tmp_city_submissions');
@@ -384,12 +359,12 @@ async function main(args = new Set(process.argv.slice(2)), opts = {}) {
       ['difficulty', difficultyPipeline()],
     ]) {
       await tmp.aggregate(pipeline).toArray();
-      log(`  built: ${name}`);
+      console.log(`  built: ${name}`);
     }
     if (!args.has('--keep-tmp')) await tmp.drop().catch(() => {});
 
     const built = await db.collection('city_analytics').countDocuments();
-    log(`city_analytics: ${built} city documents`);
+    console.log(`city_analytics: ${built} city documents`);
 
     // 5. consistency check against the MySQL view
     if (!args.has('--no-verify')) {
@@ -405,44 +380,21 @@ async function main(args = new Set(process.argv.slice(2)), opts = {}) {
                      mongo: mine ? [mine.submissions, mine.users, mine.acceptedPct] : null });
         }
       }
-      log(`Verify vs v_city_summary: ${mysqlRows.length - bad.length}/${mysqlRows.length} cities match`
+      console.log(`Verify vs v_city_summary: ${mysqlRows.length - bad.length}/${mysqlRows.length} cities match`
         + ' ([submissions, users, accepted%])');
-      for (const b of bad.slice(0, 10)) log('  MISMATCH', JSON.stringify(b));
+      for (const b of bad.slice(0, 10)) console.log('  MISMATCH', JSON.stringify(b));
     }
 
     const sample = await db.collection('city_analytics').find({}).sort({ 'totals.submissions': -1 }).limit(1).next();
-    if (sample) log('\nBusiest city document:\n' + JSON.stringify(sample, null, 2));
-
-    // Several aliases on purpose: callers (sync route / worker) read these under different names.
-    return {
-      cities: built, built, cityCount: built,
-      usable, usableSubmissions: usable, submissions: usable,
-      rawTotal, rawSubmissions: rawTotal, total: rawTotal,
-    };
+    if (sample) console.log('\nBusiest city document:\n' + JSON.stringify(sample, null, 2));
   } finally {
-    // only close what this function opened; the app's shared pool / Mongo handle stay open
-    if (client) await client.close();
-    if (ownsMy) await my.end();
+    await client.close();
+    await my.end();
   }
-}
-
-/**
- * Entry point for the Next.js sync route / worker.
- *   await buildCityAnalytics();                  // rebuild, skip the MySQL verification
- *   await buildCityAnalytics({ verify: true });  // rebuild + verify against v_city_summary
- *   await buildCityAnalytics({ keepTmp: true }); // keep tmp_city_submissions for inspection
- *   await buildCityAnalytics({ my: pool, db: mongo, verify: false, log: () => {} }); // reuse the app's connections
- * Resolves to { cities, usable, rawTotal, ... }.
- */
-async function buildCityAnalytics({ verify = false, keepTmp = false, my, db, log } = {}) {
-  const args = new Set();
-  if (!verify) args.add('--no-verify');
-  if (keepTmp) args.add('--keep-tmp');
-  return main(args, { my, db, log });
+  
 }
 
 module.exports = {
-  buildCityAnalytics, main,
   TOP, BAND_LABELS, VALIDATORS, enrichPipeline, totalsPipeline, topicsPipeline, verdictsPipeline,
   mostSolvedPipeline, languagesPipeline, difficultyPipeline, withoutLastStage,
 };
