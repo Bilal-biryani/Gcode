@@ -1,3 +1,4 @@
+
 {
   "name": "gcode",
   "version": "0.1.0",
@@ -10,11 +11,9 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
-<<<<<<< HEAD
+    "dotenv": "^16.4.7",
     "mongodb": "^7.8.0",
     "mysql2": "^3.24.6",
-=======
->>>>>>> 62316cd788c6c884da75e24a9939895e6f3742c2
     "next": "15.5.28",
     "react": "19.1.0",
     "react-dom": "19.1.0",
